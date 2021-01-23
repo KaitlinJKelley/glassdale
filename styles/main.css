@@ -17,3 +17,30 @@ h1,h2,h3,h4,h5,h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
 }
+
+/* criminals */
+.criminalsContainer {
+	display: flex;
+	flex-wrap:wrap;
+	flex-direction: row;
+}
+
+article > section {
+	border: solid gray 1px;
+	padding: 1%;
+	margin: 2% 5%;
+	width: 20%;
+}
+
+p {
+	margin: 0;
+}
+
+p:nth-of-type(1) {
+	margin-bottom: 5%;
+	font-size: 115%;
+}
+
+.criminalsContainer > section:last-of-type {
+	align-self: flex-start;
+}
