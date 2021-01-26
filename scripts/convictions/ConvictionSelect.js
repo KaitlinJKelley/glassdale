@@ -5,7 +5,7 @@ import { useConvictions } from "./ConvictionProvider.js"
     Which element in your HTML contains all components?
     That's your Event Hub. Get a reference to it here.
 */
-const eventHub = document.querySelector("main")
+const eventHub = document.querySelector(".container")
 // Get a reference to the DOM element where the <select> will be rendered
 const contentTarget = document.querySelector(".filters__crime")
 
@@ -53,3 +53,4 @@ eventHub.addEventListener("change", event => {
         eventHub.dispatchEvent(customEvent)
     }
 })
+
