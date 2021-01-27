@@ -17,7 +17,7 @@ export const criminalList = () => {
         )
 }
 
-const render = criminalCollection => {
+export const render = criminalCollection => {
 
     contentTarget.innerHTML = 
     `
@@ -55,5 +55,25 @@ eventHub.addEventListener("crimeChosen", event => {
         */
         // console.log(event.detail.crimeThatWasChosen)
         render(matchingCriminals)
+    }
+})
+
+eventHub.addEventListener("officerSelected", event => {
+    
+    if (event.detail.officer !== "0"){
+        // How can you access the officer name that was selected by the user?
+        const officerName = event.detail.officer
+
+        // How can you get the criminals that were arrested by that officer?
+        const criminals = useCriminals()
+
+        const filteredCriminals = criminals.filter(
+            criminalObject => {
+                if (criminalObject.arrestingOfficer === officerName) {
+                    return true
+                }
+            }
+            )
+            render(filteredCriminals)
     }
 })
