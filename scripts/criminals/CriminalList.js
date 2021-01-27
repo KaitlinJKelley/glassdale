@@ -34,11 +34,15 @@ eventHub.addEventListener("crimeChosen", event => {
         /*
             Filter the criminals application state down to the people that committed the crime
         */
-       const appStateCriminals = useCriminals()
        const appStateConvictions = useConvictions()
-       const conviction = appStateConvictions.find(item => item.event.detail.crimeThatWasChosen)
-        
-        
+       const conviction = appStateConvictions.find(convictionObj => {
+           return convictionObj.id === parseInt(event.detail.crimeThatWasChosen)
+        }
+        )
+       
+       
+       const appStateCriminals = useCriminals()
+       
        const matchingCriminals = appStateCriminals.filter(
 
             currentCriminal => {return currentCriminal.conviction === conviction.name
