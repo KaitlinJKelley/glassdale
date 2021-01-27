@@ -1,22 +1,59 @@
 import { useCriminals } from "./CriminalProvider.js"
 import { getCriminals } from "./CriminalProvider.js"
 import { criminalCard } from "./Criminal.js"
+import { getConvictions, useConvictions } from "../convictions/ConvictionProvider.js"
+
+const contentTarget = document.querySelector(".criminalsContainer")
 
 export const criminalList = () => {
-    const element = document.querySelector(".criminalsContainer")
-
+    
     getCriminals()
-        .then(
-            () => {
-                const criminals = useCriminals()
-
-                let criminalHtml = ""
-                for (const criminal of criminals) {
-                    criminalHtml += criminalCard(criminal)
-                }
-                element.innerHTML = `
-                    ${criminalHtml}
-                `
+    .then(
+        () => {
+                const appStateCriminals = useCriminals()
+                render(appStateCriminals)
+              
             }
         )
 }
+
+const render = criminalCollection => {
+
+    contentTarget.innerHTML = 
+    `
+    ${criminalCollection.map(conviction => criminalCard(conviction)).join("")}
+    `
+}
+
+const eventHub = document.querySelector(".container")
+
+// Listen for the custom event you dispatched in ConvictionSelect
+eventHub.addEventListener("crimeChosen", event => {
+    // Use the property you added to the event detail.
+    if (event.detail.crimeThatWasChosen !== "0"){
+        /*
+            Filter the criminals application state down to the people that committed the crime
+        */
+       const appStateConvictions = useConvictions()
+       const conviction = appStateConvictions.find(convictionObj => {
+           return convictionObj.id === parseInt(event.detail.crimeThatWasChosen)
+        }
+        )
+       
+       
+       const appStateCriminals = useCriminals()
+       
+       const matchingCriminals = appStateCriminals.filter(
+
+            currentCriminal => {return currentCriminal.conviction === conviction.name
+        }
+        )
+
+        /*
+            Then invoke render() and pass the filtered collection as
+            an argument
+        */
+        // console.log(event.detail.crimeThatWasChosen)
+        render(matchingCriminals)
+    }
+})
