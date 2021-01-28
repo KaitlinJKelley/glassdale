@@ -18,13 +18,24 @@ h1,h2,h3,h4,h5,h6 {
   letter-spacing: 2px;
 }
 
-
+.filters {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-evenly;
+}
+.toFlex {
+	display: flex;
+	/* flex-direction: column; */
+}
 
 /* criminals */
 .criminalsContainer {
 	display: flex;
 	flex-wrap:wrap;
 	flex-direction: row;
+	align-content: flex-start;
+	flex-basis: 70%;
 }
 
 .criminalsContainer > section {
@@ -36,6 +47,8 @@ h1,h2,h3,h4,h5,h6 {
 
 .criminalsContainer > section > p {
 	margin: 0;
+	overflow-wrap: break-word;
+
 }
 
 .criminalsContainer > section > p:nth-of-type(1) {
@@ -43,8 +56,20 @@ h1,h2,h3,h4,h5,h6 {
 	font-size: 115%;
 }
 
-.criminalsContainer > section:last-of-type {
-	align-self: flex-start;
+/* Officers */
+.officersContainer{
+	margin-right: 5%;
+}
+
+.officersContainer > section {
+	border: thin solid black;
+	margin: 10% 0%;
+	padding-left: 5%;
 }
 
 /* Aside */
+.noteListContainer{
+	margin-top: 1.25%;
+	margin-right: 3%;
+	flex-basis: 20%;
+}
