@@ -1,10 +1,16 @@
 {
   "notes": [
     {
-      "noteText": "test",
-      "dateOfNote": "2021-01-11",
-      "suspectName": "suspect",
+      "noteText": "test 1",
+      "dateOfNote": "2021-01-14",
+      "suspectName": "test 1",
       "id": 1
+    },
+    {
+      "noteText": "test 2",
+      "dateOfNote": "2021-01-26",
+      "suspectName": "test 2",
+      "id": 2
     }
   ]
 }
