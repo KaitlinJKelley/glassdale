@@ -14,9 +14,10 @@ eventHub.addEventListener("showNotesClicked", customEvent => {
 // convert the notes objects to HTML with NoteHTMLConverter
 const render = (noteArray) => {
     const allNotesConvertedToStrings = noteArray.map(
-       note => {NoteHTMLConverter(note)}).join("")
-       contentTarget.innerHTML = `${allNotesConvertedToStrings}`
-    }
+        note => NoteHTMLConverter(note)).join("")
+
+    return contentTarget.innerHTML = `${allNotesConvertedToStrings}`
+}
 
 // Standard list function you're used to writing by now. BUT, don't call this in main.js! Why not?
 export const NoteList = () => {
@@ -26,3 +27,4 @@ export const NoteList = () => {
             render(allNotes)
         })
 }
+
