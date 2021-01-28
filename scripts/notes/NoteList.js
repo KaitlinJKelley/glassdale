@@ -17,8 +17,13 @@ eventHub.addEventListener("showNotesClicked", customEvent => {
     
 })
 
-// Any time the state of the note API changes, if the state changed === true, invoke NoteList again to render the added notes
+// Any time the state of the note API changes, if the state changed === true, invoke NoteList again to render the added notes OR
+// in coments if the element with a class of noteList is not empty (meaning show notes was clicked and that container was populated) then 
+// invoke NoteList again to re-render the notes
 eventHub.addEventListener("noteStateChanged", customEvent => {
+    // if (contentTarget.innerHTML !== "") {
+    //     NoteList()
+    // }
     if (stateChanged === true) {
         NoteList()
     }
