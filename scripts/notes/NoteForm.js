@@ -1,18 +1,18 @@
+import { NoteList } from "./NoteList.js"
 import { saveNote } from "./NoteProvider.js"
 
 const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
 
 
-const render = () => {
+export const render = () => {
+    // Added label tags for each input; do input tags have to have a label tag?
     contentTarget.innerHTML = `
-        <form>
             <textarea id="note-text" placeholder="Note"></textarea>
             <input type="date" id="note-date"></input>
             <input type="text" id="note-suspect" placeholder="Suspect Name"></input>
 
             <button type="button" id="saveNote">Save Note</button>
-        </form>
     `
 }
 export const NoteForm = () => {
@@ -23,7 +23,7 @@ export const NoteForm = () => {
 // Handle browser-generated click event in component
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveNote") {
-        debugger
+        // debugger
         // Make a new object representation of a note
         const newNote = {
             // Key/value pairs here
@@ -36,4 +36,5 @@ eventHub.addEventListener("click", clickEvent => {
         saveNote(newNote)
     }
 })
+
 

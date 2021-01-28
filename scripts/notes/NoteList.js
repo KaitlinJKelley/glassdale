@@ -1,4 +1,4 @@
-import { getNotes, useNotes } from "./NoteProvider.js";
+import { getNotes, saveNote, useNotes } from "./NoteProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
 
 
@@ -7,12 +7,25 @@ const contentTarget = document.querySelector(".noteList")
 // Define ye olde Evente Hubbe
 const eventHub = document.querySelector(".container")
 
+// Create a state variable set to false
+let stateChanged = false
+
+// When Show Notes button is clicked, the existing notes show, and the state variable is reassigned to true
 eventHub.addEventListener("showNotesClicked", customEvent => {
     NoteList()
+    stateChanged = true
+    
+})
+
+// Any time the state of the note API changes, if the state changed === true, invoke NoteList again to render the added notes
+eventHub.addEventListener("noteStateChanged", customEvent => {
+    if (stateChanged === true) {
+        NoteList()
+    }
 })
 
 // convert the notes objects to HTML with NoteHTMLConverter
-const render = (noteArray) => {
+export const render = (noteArray) => {
     const allNotesConvertedToStrings = noteArray.map(
         note => NoteHTMLConverter(note)).join("")
 
@@ -25,6 +38,8 @@ export const NoteList = () => {
         .then(() => {
             const allNotes = useNotes()
             render(allNotes)
+            
         })
 }
+
 
