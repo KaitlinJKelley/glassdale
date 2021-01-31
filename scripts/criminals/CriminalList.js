@@ -15,7 +15,7 @@ export const criminalList = () => {
               
             }
         )
-}
+    }
 
 export const render = criminalCollection => {
 
@@ -76,4 +76,16 @@ eventHub.addEventListener("officerSelected", event => {
             )
             render(filteredCriminals)
     }
+})
+
+// Listens for a click on Show Alibi button, checks to see if there is a matching criminal ID, and if yes, shows the criminal's alibi info
+eventHub.addEventListener("alibiClicked", event => {
+
+        const arrayOfCriminals = useCriminals()
+        for(const criminal of arrayOfCriminals) {
+            if (criminal.id === parseInt(event.detail.id)) {
+                window.confirm(`Associate: ${criminal.known_associates[0].name} Alibi: ${criminal.known_associates[0].alibi}`)
+            }
+        }
+
 })

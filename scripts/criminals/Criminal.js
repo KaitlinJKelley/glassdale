@@ -6,6 +6,8 @@ export const criminalCard = (criminalObj) => {
             <p>Crime: ${criminalObj.conviction}</p>
             <p>Term Start: ${new Date(criminalObj.incarceration.start).toLocaleDateString('en-US')}</p>
             <p>Term End: ${new Date(criminalObj.incarceration.end).toLocaleDateString('en-US')}</p>
+            
+            <button id="associates--${criminalObj.id}">Associate Alibis</button>
         </section>
         `
 }
