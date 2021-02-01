@@ -89,3 +89,8 @@ eventHub.addEventListener("alibiClicked", event => {
         }
 
 })
+
+// If someone clicks Show Criminal button
+eventHub.addEventListener("ShowCriminalsClicked", event => {
+    criminalList()
+})

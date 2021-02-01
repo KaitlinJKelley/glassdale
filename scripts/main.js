@@ -17,5 +17,14 @@ officerSelect()
 ShowNoteButton()
 
 
+import { renderWitnessButton } from "./witnesses/ShowWitnessButton.js"
+renderWitnessButton()
+import { showCriminalsButton } from "./criminals/ShowCriminalsButton.js"
+showCriminalsButton()
 
 
+
+
+import "./witnesses/WitnessList.js"
+import "./witnesses/WitnessProvider.js"
+import { witnessList } from "./witnesses/WitnessList.js"
