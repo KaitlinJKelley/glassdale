@@ -20,6 +20,8 @@ export const render = (officers) => {
         officerHtml += officerCard(officer)
     }
 
-    element.innerHTML = `${officerHtml}`
+    element.innerHTML = `
+    <h2>Officers</h2>
+    ${officerHtml}`
 }
 
