@@ -21,6 +21,7 @@ export const render = criminalCollection => {
 
     contentTarget.innerHTML = 
     `
+    <h2>Criminals</h2>
     ${criminalCollection.map(conviction => criminalCard(conviction)).join("")}
     `
 }
@@ -84,7 +85,9 @@ eventHub.addEventListener("alibiClicked", event => {
         const arrayOfCriminals = useCriminals()
         for(const criminal of arrayOfCriminals) {
             if (criminal.id === parseInt(event.detail.id)) {
-                window.confirm(`Associate: ${criminal.known_associates[0].name} Alibi: ${criminal.known_associates[0].alibi}`)
+                // window.confirm(`Associate: ${criminal.known_associates[0].name} Alibi: ${criminal.known_associates[0].alibi}`)
+                window.confirm(criminal.known_associates.map(associateObj => 
+                    `Associate: ${associateObj.name} Alibi: ${associateObj.alibi}`).join("\n"))
             }
         }
 
