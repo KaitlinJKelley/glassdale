@@ -47,9 +47,8 @@ eventHub.addEventListener("click", clickEvent => {
             // Key/value pairs here
             noteText: document.querySelector("#note-text").value,
             dateOfNote: document.querySelector("#note-date").value,
-            criminalId: selectedCriminalId
+            criminalId: parseInt(selectedCriminalId)
         }
-
         // Change API state and application state
         saveNote(newNote)
     }
@@ -62,18 +61,19 @@ eventHub.addEventListener("change", event => {
         
         const customEvent = new CustomEvent("criminalSelected", {
             detail: {
-                criminalId: criminalId
+                chosenCriminalId: criminalId
             }
         })
+        eventHub.dispatchEvent(customEvent)
     }
 
         // Dispatch event to event hub
-        eventHub.dispatchEvent(customEvent)
       
 })
 
+let selectedCriminalId = ""
 eventHub.addEventListener("criminalSelected", event => {
-     selectedCriminalId = event.detail.criminalId
+     selectedCriminalId = event.detail.chosenCriminalId
 })
 
 

@@ -1,65 +1,10 @@
 {
   "notes": [
     {
-      "noteText": "",
-      "dateOfNote": "",
+      "noteText": "note",
+      "dateOfNote": "2021-02-19",
+      "criminalId": 7,
       "id": 1
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "id": 2
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "id": 3
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "id": 4
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "id": 5
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "criminalId": "",
-      "id": 6
-    },
-    {
-      "noteText": "note note",
-      "dateOfNote": "2021-02-04",
-      "criminalId": "",
-      "id": 7
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "criminalId": "",
-      "id": 8
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "criminalId": "13",
-      "id": 9
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "criminalId": "",
-      "id": 10
-    },
-    {
-      "noteText": "",
-      "dateOfNote": "",
-      "criminalId": "",
-      "id": 11
     }
   ]
 }
