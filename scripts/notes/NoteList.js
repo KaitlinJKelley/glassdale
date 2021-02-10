@@ -33,8 +33,7 @@ eventHub.addEventListener("noteStateChanged", customEvent => {
 // convert the notes objects to HTML with NoteHTMLConverter
 const render = (noteCollection, criminalCollection) => {
     contentTarget.innerHTML = noteCollection.map(note => {
-        // Find the related criminal
-        
+        // Find the criminal whose id matches the criminalId in the note that's currently being iterated
         const relatedCriminal = criminalCollection.find(criminal => criminal.id === note.criminalId)
 
         return `

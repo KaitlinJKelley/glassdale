@@ -59,10 +59,8 @@ let selectedCriminalId = ""
 eventHub.addEventListener("change", event => {
     if (event.target.id === "noteForm--criminal") { 
         // When a change occurs in the dropdown, the value of the selection (criminal's ID) is stored in the criminalId variable
-        selectedCriminalId = event.target.value
-        
-    }
-    
+        selectedCriminalId = event.target.value   
+    } 
 })
 
 
