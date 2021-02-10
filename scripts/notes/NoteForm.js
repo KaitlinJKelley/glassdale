@@ -23,7 +23,8 @@ export const render = () => {
                 <textarea id="note-text" placeholder="Note"></textarea>
                 <input type="date" id="note-date"></input>
                 <select id="noteForm--criminal" class="criminalSelect">
-                ${optionTags}
+                    <option value="0">Please select a criminal</option>
+                    ${optionTags}
                 </select>
                 
                 <button type="button" id="saveNote">Save Note</button>
@@ -54,26 +55,15 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
-
+let selectedCriminalId = ""
 eventHub.addEventListener("change", event => {
     if (event.target.id === "noteForm--criminal") { 
-        let criminalId = event.target.value
+        // When a change occurs in the dropdown, the value of the selection (criminal's ID) is stored in the criminalId variable
+        selectedCriminalId = event.target.value
         
-        const customEvent = new CustomEvent("criminalSelected", {
-            detail: {
-                chosenCriminalId: criminalId
-            }
-        })
-        eventHub.dispatchEvent(customEvent)
     }
-
-        // Dispatch event to event hub
-      
+    
 })
 
-let selectedCriminalId = ""
-eventHub.addEventListener("criminalSelected", event => {
-     selectedCriminalId = event.detail.chosenCriminalId
-})
 
 

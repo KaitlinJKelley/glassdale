@@ -2,9 +2,27 @@
   "notes": [
     {
       "noteText": "note",
-      "dateOfNote": "2021-02-19",
-      "criminalId": 7,
+      "dateOfNote": "2021-02-26",
+      "criminalId": 11,
       "id": 1
+    },
+    {
+      "noteText": "another note",
+      "dateOfNote": "2021-02-26",
+      "criminalId": 33,
+      "id": 2
+    },
+    {
+      "noteText": "yep",
+      "dateOfNote": "2021-02-12",
+      "criminalId": 22,
+      "id": 3
+    },
+    {
+      "noteText": "",
+      "dateOfNote": "",
+      "criminalId": 8,
+      "id": 4
     }
   ]
 }
