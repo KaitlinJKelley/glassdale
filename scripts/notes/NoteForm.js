@@ -7,16 +7,7 @@ const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
 
 
-
-export const render = () => {
-    let optionTags = ""
-    // Creates option tags for each criminal
-        getCriminals()
-            .then(() => {
-                let criminals = useCriminals()
-    
-                optionTags += criminals.map((criminal) => {return `<option value="${ criminal.id }">${ criminal.name }</option>`})
-                
+export const render = (criminals) => {
                 
                 // Puts NoteForm on the DOM
                 contentTarget.innerHTML = `
@@ -24,17 +15,20 @@ export const render = () => {
                 <input type="date" id="note-date"></input>
                 <select id="noteForm--criminal" class="criminalSelect">
                     <option value="0">Please select a criminal</option>
-                    ${optionTags}
+                    ${criminals.map((criminal) => `<option value="${ criminal.id }">${ criminal.name }</option>`).join("")}
                 </select>
                 
                 <button type="button" id="saveNote">Save Note</button>
                 `
-            })
+
 }
 
 export const NoteForm = () => {  
-    // debugger
-    render()
+    getCriminals()
+        .then(() => {
+            let criminals = useCriminals()
+            render(criminals)
+        }) 
 }
 
 
