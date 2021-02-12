@@ -37,13 +37,12 @@ h1,h2,h3,h4,h5,h6 {
 	flex-wrap:wrap;
 	flex-direction: row;
 	align-content: flex-start;
-	flex-basis: 70%;
 }
 
 .criminalsContainer > section {
 	border: solid gray 1px;
 	padding: 1%;
-	margin: 2% 5%;
+	margin: 2% 1%;
 	width: 20%;
 }
 
@@ -58,9 +57,23 @@ h1,h2,h3,h4,h5,h6 {
 	font-size: 115%;
 }
 
+h4 {
+	font-size: 1.4em;
+}
+
+/* Facilities */
+.facilities > h2 {
+	font-size: 1.25em;
+}
+
+ul {
+	padding-inline-start: 10%;
+}
+
 /* Officers */
 .officersContainer{
 	margin-right: 5%;
+
 }
 
 .officersContainer > section {
@@ -73,7 +86,6 @@ h1,h2,h3,h4,h5,h6 {
 .noteListContainer{
 	margin-top: 1.25%;
 	margin-right: 3%;
-	flex-basis: 20%;
 }
 
 .note {
