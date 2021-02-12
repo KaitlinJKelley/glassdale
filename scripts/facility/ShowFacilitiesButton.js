@@ -15,3 +15,13 @@ eventHub.addEventListener("click", event => {
         eventHub.dispatchEvent(customEvent)
     }
 })
+
+// Toggles Show Facilities button text when button is clicked
+eventHub.addEventListener("FacilitiesButtonClicked", event => {
+    const button = document.querySelector("#showFacilitiesButton")
+    if (button.innerHTML === "Show Facilities") {
+        button.innerHTML = "Hide Facilities"
+    } else {
+        button.innerHTML = "Show Facilities"
+    }
+})
