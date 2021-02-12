@@ -1,5 +1,6 @@
 import { getNotes, saveNote, useNotes } from "./NoteProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
+import { getCriminals, useCriminals } from '../criminals/CriminalProvider.js'
 
 
 // Query the DOM for the element that your notes will be added to 
@@ -30,20 +31,29 @@ eventHub.addEventListener("noteStateChanged", customEvent => {
 })
 
 // convert the notes objects to HTML with NoteHTMLConverter
-export const render = (noteArray) => {
-    const allNotesConvertedToStrings = noteArray.map(
-        note => NoteHTMLConverter(note)).join("")
+const render = (noteCollection, criminalCollection) => {
+    contentTarget.innerHTML = noteCollection.map(note => {
+        // Find the criminal whose id matches the criminalId in the note that's currently being iterated
+        const relatedCriminal = criminalCollection.find(criminal => criminal.id === note.criminalId)
 
-    return contentTarget.innerHTML = `${allNotesConvertedToStrings}`
+        return `
+            <section class="note">
+                <h2>Note about ${relatedCriminal.name}</h2>
+                ${note.noteText}
+            </section>
+        `
+    })
 }
 
 // Standard list function you're used to writing by now. BUT, don't call this in main.js! Why not?
 export const NoteList = () => {
     getNotes()
+        .then(getCriminals)
         .then(() => {
-            const allNotes = useNotes()
-            render(allNotes)
-            
+            const notes = useNotes()
+            const criminals = useCriminals()
+
+            render(notes, criminals)
         })
 }
 

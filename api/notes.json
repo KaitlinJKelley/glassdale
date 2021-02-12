@@ -1,28 +1,16 @@
 {
   "notes": [
     {
-      "noteText": "test 1",
-      "dateOfNote": "2021-01-14",
-      "suspectName": "test 1",
+      "noteText": "note",
+      "dateOfNote": "2021-02-07",
+      "criminalId": 4,
       "id": 1
     },
     {
-      "noteText": "test 2",
-      "dateOfNote": "2021-01-26",
-      "suspectName": "test 2",
+      "noteText": "note",
+      "dateOfNote": "2021-02-16",
+      "criminalId": 28,
       "id": 2
-    },
-    {
-      "noteText": "note 3",
-      "dateOfNote": "2021-02-25",
-      "suspectName": "note",
-      "id": 3
-    },
-    {
-      "noteText": "datenote",
-      "dateOfNote": "2021-02-01",
-      "suspectName": "date",
-      "id": 4
     }
   ]
 }
