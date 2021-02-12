@@ -1,4 +1,4 @@
-import { getNotes, saveNote, useNotes } from "./NoteProvider.js";
+import { getNotes, saveNote, useNotes, deleteNote } from "./NoteProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
 import { getCriminals, useCriminals } from '../criminals/CriminalProvider.js'
 
@@ -40,6 +40,7 @@ const render = (noteCollection, criminalCollection) => {
             <section class="note">
                 <h2>Note about ${relatedCriminal.name}</h2>
                 ${note.noteText}
+                <button id="deleteNote--${note.id}">Delete</button>
             </section>
         `
     })
@@ -47,6 +48,7 @@ const render = (noteCollection, criminalCollection) => {
 
 // Standard list function you're used to writing by now. BUT, don't call this in main.js! Why not?
 export const NoteList = () => {
+    debugger
     getNotes()
         .then(getCriminals)
         .then(() => {
@@ -57,4 +59,25 @@ export const NoteList = () => {
         })
 }
 
+// When the user clicks Delete button
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("deleteNote--")) {
+        debugger
+        // Pulls note id from button id
+        const [prefix, id] = clickEvent.target.id.split("--")
 
+        /*
+            Invoke the function that performs the delete operation.
+
+            Once the operation is complete you should THEN invoke
+            useNotes() and render the note list again.
+        */
+       deleteNote(id).then(
+           () => {
+               const updatedNotes = useNotes()
+               const criminals = useCriminals()
+               render(updatedNotes, criminals)
+           }
+       )
+    }
+})
