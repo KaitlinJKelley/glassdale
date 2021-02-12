@@ -50,6 +50,10 @@ const eventHub = document.querySelector(".container")
 eventHub.addEventListener("crimeChosen", event => {
     // Use the property you added to the event detail.
     if (event.detail.crimeThatWasChosen !== "0"){
+
+        const facilities = useFacilities()
+        const crimFac = useCriminalFacilities()
+
         /*
             Filter the criminals application state down to the people that committed the crime
         */
@@ -73,13 +77,15 @@ eventHub.addEventListener("crimeChosen", event => {
             an argument
         */
         // console.log(event.detail.crimeThatWasChosen)
-        render(matchingCriminals)
+        render(matchingCriminals, facilities, crimFac)
     }
 })
 
 eventHub.addEventListener("officerSelected", event => {
     
     if (event.detail.officer !== "0"){
+        const facilities = useFacilities()
+        const crimFac = useCriminalFacilities()
         // How can you access the officer name that was selected by the user?
         const officerName = event.detail.officer
 
@@ -93,7 +99,7 @@ eventHub.addEventListener("officerSelected", event => {
                 }
             }
             )
-            render(filteredCriminals)
+            render(filteredCriminals, facilities, crimFac)
     }
 })
 
@@ -111,7 +117,22 @@ eventHub.addEventListener("alibiClicked", event => {
 
 })
 
-// If someone clicks Show Criminal button
+// If someone clicks Show Criminal button; conditional brings criminals back to DOM if Show Facilities was previously clicked
 eventHub.addEventListener("ShowCriminalsClicked", event => {
+    const facilityContainer = document.querySelector(".facilityContainer")
     criminalList()
+    if (contentTarget.style.display === "none") {
+        contentTarget.style.display = "flex";
+        facilityContainer.style.display = "none";
+      } 
+})
+
+// Toggle criminalContainer visibility when Facilities Button is clicked
+eventHub.addEventListener("FacilitiesButtonClicked", event => {
+
+  if (contentTarget.style.display === "none") {
+    contentTarget.style.display = "flex";
+  } else {
+    contentTarget.style.display = "none";
+  }
 })

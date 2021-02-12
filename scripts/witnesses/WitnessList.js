@@ -26,5 +26,12 @@ const rendertoDom = (arrayOfWitnesses) => {
 const eventHub = document.querySelector(".container")
 
 eventHub.addEventListener("ShowWitnessesClicked", () => {
+    const facilityContainer = document.querySelector(".facilityContainer")
+    
     witnessList()
+    
+    if (contentTarget.style.display === "none") {
+        contentTarget.style.display = "flex";
+        facilityContainer.style.display = "none";
+      } 
 })
