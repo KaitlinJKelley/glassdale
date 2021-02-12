@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+@import "./facilities.css";
 
 /*Typography
 --------------------------------------------------------------*/
@@ -44,6 +45,7 @@ h1,h2,h3,h4,h5,h6 {
 	padding: 1%;
 	margin: 2% 1%;
 	width: 20%;
+	background-color: pink;
 }
 
 .criminalsContainer > section > p {
@@ -80,6 +82,7 @@ ul {
 	border: thin solid black;
 	margin: 10% 0%;
 	padding-left: 5%;
+	background-color: lightblue;
 }
 
 /* Aside */
